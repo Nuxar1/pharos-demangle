@@ -44,4 +44,4 @@ install(TARGETS libdemangle EXPORT DEMANGLE_EXPORT
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-install(FILES demangle.hpp codes.hpp code_data.hpp DESTINATION include/libdemangle)
+install(FILES demangle.hpp codes.hpp code_data.hpp DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")

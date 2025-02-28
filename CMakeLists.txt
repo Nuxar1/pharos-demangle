@@ -66,6 +66,4 @@ install(EXPORT DEMANGLE_EXPORT
   FILE DemangleTagets.cmake
   NAMESPACE "Demangle::"
   DESTINATION lib/cmake/demangle)
-install(FILES "${CMAKE_CURRENT_BINARY_DIR}/DemangleConfig.cmake"
-              "${CMAKE_CURRENT_BINARY_DIR}/DemangleConfigVersion.cmake"
-        DESTINATION lib/cmake/demangle)
+
