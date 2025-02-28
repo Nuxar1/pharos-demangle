@@ -26,6 +26,7 @@
 
 #include "demangle.hpp"
 #include <ostream>              // std::ostream
+#include <cstdint>
 
 namespace demangle {
 

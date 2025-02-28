@@ -20,7 +20,7 @@
 #
 # DM17-0949
 
-find_package(Boost 1.60.0 REQUIRED)
+find_package(boost_filesystem REQUIRED)
 
 add_library(libdemangle SHARED demangle.cpp json.cpp demangle_json.cpp
             codes.cpp demangle_text.cpp)

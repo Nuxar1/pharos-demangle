@@ -225,7 +225,7 @@ void Converter::do_method_properties(DemangledType const & m)
   {
     stream << "[thunk]: ";
   }
-  stream.operator<<(m.scope); // written this way due to operator lookup ambiguity
+  stream.operator<<((int)m.scope); // written this way due to operator lookup ambiguity
   if (m.method_property == MethodProperty::Static) stream << "static ";
   if (m.method_property == MethodProperty::Virtual
       // Thunks are virtual
@@ -552,7 +552,7 @@ void Converter::do_type(
 {
   do_method_properties(type);
   if (type.distance != Distance::Near || stream.attr[TextAttribute::OUTPUT_NEAR]) {
-    stream.operator<<(type.distance); // written this way due to operator lookup ambiguity
+    stream.operator<<((int)type.distance); // written this way due to operator lookup ambiguity
   }
   auto pname = name;
   if (type.is_array) {
