@@ -27,7 +27,6 @@ add_library(libdemangle SHARED demangle.cpp json.cpp demangle_json.cpp
 
 set_target_properties(libdemangle PROPERTIES
   CXX_STANDARD 11
-  OUTPUT_NAME demangle
   VERSION ${PROJECT_VERSION}
   SOVERSION ${PROJECT_VERSION_MAJOR})
 
