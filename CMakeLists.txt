@@ -20,7 +20,7 @@
 #
 # DM17-0949
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.12)
 project(demangle VERSION 1.1.0 LANGUAGES CXX)
 
 include(GNUInstallDirs)
@@ -30,9 +30,6 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-
-set(CMAKE_INSTALL_RPATH_USE_LINK_PATH true)
-set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
 
 include(AddCXXCompilerFlags)
 include(CheckCXXCompilerFlag)
@@ -48,21 +45,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED on)
 
 set(BOOST_ROOT "" CACHE PATH "Where to look for Boost")
 
-include(CMakePackageConfigHelpers)
-write_basic_package_version_file(DemangleConfigVersion.cmake
-  VERSION "${PROJECT_VERSION}"
-  COMPATIBILITY SameMajorVersion)
-configure_package_config_file(
-  "${CMAKE_SOURCE_DIR}/cmake/DemangleConfig.cmake.in"
-  DemangleConfig.cmake
-  INSTALL_DESTINATION lib/cmake/demangle
-  NO_SET_AND_CHECK_MACRO
-  NO_CHECK_REQUIRED_COMPONENTS_MACRO)
-
 add_subdirectory(libdemangle)
 add_subdirectory(src)
 
 install(EXPORT DEMANGLE_EXPORT
-  FILE DemangleConfig.cmake
-  NAMESPACE "Demangle::"
-  DESTINATION lib/cmake/demangle)
+  FILE demangle-config.cmake
+  NAMESPACE demangle::
+  DESTINATION share/demangle)
