@@ -49,6 +49,6 @@ add_subdirectory(libdemangle)
 add_subdirectory(src)
 
 install(EXPORT DEMANGLE_EXPORT
-  FILE demangle-config.cmake
+  FILE pharos-demangle-config.cmake
   NAMESPACE demangle::
   DESTINATION share/demangle)
