@@ -25,22 +25,19 @@ find_package(boost_filesystem REQUIRED)
 add_library(libdemangle SHARED demangle.cpp json.cpp demangle_json.cpp
             codes.cpp demangle_text.cpp)
 
-set_target_properties(libdemangle PROPERTIES
-  CXX_STANDARD 11
-  VERSION ${PROJECT_VERSION}
-  SOVERSION ${PROJECT_VERSION_MAJOR})
-
 target_include_directories(libdemangle INTERFACE
   $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>
   PRIVATE ${Boost_INCLUDE_DIR})
 
-target_compile_features(libdemangle
-  PUBLIC cxx_alias_templates cxx_strong_enums cxx_defaulted_functions cxx_rvalue_references
-  PRIVATE cxx_lambdas)
-
 install(TARGETS libdemangle EXPORT DEMANGLE_EXPORT
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+
 install(FILES demangle.hpp codes.hpp code_data.hpp DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}")
+
+install(EXPORT DEMANGLE_EXPORT
+  FILE pharos-demangle-config.cmake
+  NAMESPACE pharos-demangle::
+  DESTINATION share/pharos-demangle)

@@ -31,14 +31,6 @@ endif()
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-include(AddCXXCompilerFlags)
-include(CheckCXXCompilerFlag)
-check_cxx_compiler_flag(-ggdb3 gdb_debugging)
-if(gdb_debugging)
-   set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -ggdb3")
-endif()
-add_cxx_compiler_flags(-pedantic -Wall -Wextra -Wshadow -Wstrict-aliasing)
-
 set(CMAKE_CXX_EXTENSIONS off)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
@@ -46,9 +38,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED on)
 set(BOOST_ROOT "" CACHE PATH "Where to look for Boost")
 
 add_subdirectory(libdemangle)
-add_subdirectory(src)
-
-install(EXPORT DEMANGLE_EXPORT
-  FILE pharos-demangle-config.cmake
-  NAMESPACE pharos-demangle::
-  DESTINATION share/pharos-demangle)
+#add_subdirectory(src)
